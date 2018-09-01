@@ -1,0 +1,29 @@
+type Vaccine {
+  id: ID!
+  title: String!
+  description: String!
+  doseType: DoseType!
+}
+
+enum DoseType {
+  unique,
+  two,
+  three,
+  four,
+  five
+}
+
+schema {
+  query: Query,
+  mutation: Mutation
+}
+
+type Query {
+  getVaccineById(id: ID!): Vaccine
+  getVaccineByTitle(title: String!): [Vaccine]
+  getAllVaccines: [Vaccine]
+}
+
+type Mutation {
+  addVaccine(title: String!, description: String!, doseType: DoseType!): Vaccine
+}
